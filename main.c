@@ -162,11 +162,16 @@ int get_size(void *arr, int index)
 	// startig with a pointer that indicates arr's first position
 	void *tmp = arr;
 	int len = 0; // the total length, we'll return it later
+	
+	int size_uchar = sizeof(unsigned char);
+	int size_uint = sizeof(unsigned int);
+	int size_head = sizeof(head);
 
-	for (int i = 0; i < index; ++i) {
-		tmp += sizeof(unsigned char);
-		len += *(unsigned int *)tmp + sizeof(head);
-		tmp += sizeof(unsigned int) + *(unsigned int *)tmp;
+	register int i = 0;
+	for (i = 0; i < index; ++i) {
+		tmp += size_uchar;
+		len += *(unsigned int *)tmp + size_head;
+		tmp += size_uint + *(unsigned int *)tmp;
 	}
 
 	return len;
@@ -179,6 +184,7 @@ int add_last(void **arr, int *len, data_structure *data)
 
 	// we first transfer the header and after adding its length we'all also add
 	// the data
+
 	memcpy(*arr + total_len, data->header, sizeof(head));
 	total_len += sizeof(head);
 	memcpy(*arr + total_len, data->data, data->header->len);
@@ -304,12 +310,13 @@ int delete_at(void **arr, int *len, int index)
 void print(void *arr, int len)
 {
 	void *tmp = arr;
-
-	for (int i = 0; i < len; ++i) {
+	int size_head = sizeof(head);
+	register int i = 0;
+	for (i = 0; i < len; ++i) {
 		unsigned char type = *(unsigned char *)(tmp);
 		printf("Tipul %hhu\n", type);
 
-		tmp += sizeof(head);
+		tmp += size_head;
 	
 		printf("%s pentru ", (char *)tmp);
 		tmp += strlen((char *)tmp) + 1;
@@ -365,18 +372,21 @@ void add_to_array(void **arr, char *person1, char *person2, void *bill1,
 {
 	// getting the size of the each bill according to header's type
 	int size_bill1, size_bill2;
-
+	int size_int8 = sizeof(int8_t);
+	int size_int16 = sizeof(int16_t);
+	int size_int32 = sizeof(int32_t);
+	
 	if (type == 1) {
-		size_bill1 = sizeof(int8_t);
-		size_bill2 = sizeof(int8_t);
+		size_bill1 = size_int8;
+		size_bill2 = size_int8;
 	}
 	if (type == 2) {
-		size_bill1 = sizeof(int16_t);
-		size_bill2 = sizeof(int32_t);
+		size_bill1 = size_int16;
+		size_bill2 = size_int32;
 	}
 	if (type == 3) {
-		size_bill1 = sizeof(int32_t);
-		size_bill2 = sizeof(int32_t);
+		size_bill1 = size_int32;
+		size_bill2 = size_int32;
 	}
 
 	// making space for the new data in the polymorphic array
