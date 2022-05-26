@@ -6,7 +6,7 @@ OBJ += src/inserts.o src/removes.o src/utils.o
 %.o: %.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-bin/main: $(OBJ) $(DEPS)
+bin/main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 .PHONY: clean
