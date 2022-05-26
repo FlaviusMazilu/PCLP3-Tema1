@@ -6,6 +6,7 @@
 #include <inttypes.h>
 #include <errno.h>
 #include "structs.h"
+#include "ceva.h"
 
 #define STRING_MAX_LEN 256
 
