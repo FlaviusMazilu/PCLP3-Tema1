@@ -1,5 +1,8 @@
+// Copyright 2022 Maria Sfiraiala & Flavius Mazilu (314CA)
+
 #ifndef _REMOVES_H_
 #define _REMOVES_H_
+
 /*
 * @brief -> deletes a data package starting with the "index" position of the
 *			array
