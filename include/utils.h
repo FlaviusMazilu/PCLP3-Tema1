@@ -1,3 +1,5 @@
+// Copyright 2022 Maria Sfiraiala & Flavius Mazilu (314CA)
+
 #ifndef _UTILS_H_
 #define _UTILS_H_
 

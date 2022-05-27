@@ -1,5 +1,8 @@
+// Copyright 2022 Maria Sfiraiala & Flavius Mazilu (314CA)
+
 #ifndef _INSERTS_H_
 #define _INSERTS_H_
+
 /*
 * @brief -> adds a data package starting with the last position of the array
 * @param -> arr = the array which contains the data
