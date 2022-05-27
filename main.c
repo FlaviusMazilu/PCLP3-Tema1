@@ -1,4 +1,4 @@
-// Copyright 2022 Maria Sfiraiala (maria.sfiraiala@stud.acs.upb.ro)
+// Copyright 2022 Maria Sfiraiala & Flavius Mazilu (314CA)
 
 #include <stdio.h>
 #include <stdlib.h>
